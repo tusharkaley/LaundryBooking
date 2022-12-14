@@ -1,5 +1,8 @@
 package com.laundrybooking.model;
 
+import lombok.Builder;
+
+@Builder
 public class House {
 
     public int id;

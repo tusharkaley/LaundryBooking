@@ -1,5 +1,8 @@
 package com.laundrybooking.model;
 
+import lombok.Builder;
+
+@Builder
 public class LaundryRoom {
     public int id;
 
@@ -9,7 +12,9 @@ public class LaundryRoom {
 
     public int endHour;
 
-    public String timeZone;
-
     public int minSlotLength;
+
+    public int maxSlotLength;
+
+    public int bookingWindow;
 }
