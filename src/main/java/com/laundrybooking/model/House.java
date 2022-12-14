@@ -1,17 +1,18 @@
 package com.laundrybooking.model;
 
 public class House {
-    private int id;
 
-    private String streetAddress;
+    public int id;
 
-    private String houseNumber;
+    public String streetAddress;
 
-    private String city;
+    public String houseNumber;
 
-    private String state;
+    public String city;
 
-    private String zipCode;
+    public String state;
 
-    private String contactNumber;
+    public String zipCode;
+
+    public String contactNumber;
 }

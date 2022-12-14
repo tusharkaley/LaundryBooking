@@ -2,16 +2,19 @@ package com.laundrybooking.model;
 
 import java.time.Instant;
 
+import lombok.Builder;
+
+@Builder
 public class Booking {
-    private String id;
+    public String id;
 
-    private int houseId;
+    public int houseId;
 
-    private int laundryRoomId;
+    public int laundryRoomId;
 
-    private Instant bookingStartTimeUTC;
+    public Instant bookingStartTimeUTC;
 
-    private Instant bookingEndTimeUTC;
+    public Instant bookingEndTimeUTC;
 
-    private BookingStatus bookingStatus;
+    public BookingStatus bookingStatus;
 }

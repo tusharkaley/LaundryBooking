@@ -4,3 +4,42 @@
  * This is a general purpose Gradle build.
  * Learn more about Gradle by exploring our samples at https://docs.gradle.org/7.6/samples
  */
+plugins {
+    id 'java'
+    id 'jacoco'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    implementation 'org.mockito:mockito-junit-jupiter:4.8.0'
+    implementation 'org.mockito:mockito-inline:4.8.0'
+    implementation 'org.mockito:mockito-core:4.8.0'
+    implementation 'org.json:json:20220924'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
+    testImplementation 'org.testng:testng:7.6.1'
+}
+
+test {
+    finalizedBy jacocoTestReport
+    useJUnitPlatform()
+    maxHeapSize = '1G'
+
+    testLogging {
+        events "passed"
+    }
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+}

@@ -1,9 +1,15 @@
 package com.laundrybooking.model;
 
 public class LaundryRoom {
-    private int roomId;
+    public int id;
 
-    private int startHour;
+    public String name;
 
-    private int endHour;
+    public int startHour;
+
+    public int endHour;
+
+    public String timeZone;
+
+    public int minSlotLength;
 }
