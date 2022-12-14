@@ -11,6 +11,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
+
 public class BookingValidator {
 
     static final String BOOKING_START_TIME_GT_END_TIME = "Booking start time cannot be greater than end time";
@@ -29,6 +30,10 @@ public class BookingValidator {
         this.houseDataAccessor = houseDataAccessor;
     }
 
+    /**
+     * Validates a book request sent by clients and responds with a null if all validations go through or an error string message
+     * if there are validation failures
+     */
     String validateBooking(final String laundryRoomId, final String houseId,
                            final String bookingStartDateTimeUTC, final String bookingEndDateTimeUTC) {
         final LaundryRoom laundryRoom = laundryRoomDataAccessor.read(laundryRoomId);
@@ -40,11 +45,7 @@ public class BookingValidator {
             return INVALID_HOUSE_ID;
         }
 
-        final String bookingTimeValidations = validateBookingTimes(bookingStartDateTimeUTC, bookingEndDateTimeUTC, laundryRoom);
-        if (bookingTimeValidations != null) {
-            return bookingTimeValidations;
-        }
-        return null;
+        return validateBookingTimes(bookingStartDateTimeUTC, bookingEndDateTimeUTC, laundryRoom);
     }
 
     /**

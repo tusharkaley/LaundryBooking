@@ -4,7 +4,6 @@ import lombok.Builder;
 
 @Builder
 public class House {
-
     public int id;
 
     public String streetAddress;
