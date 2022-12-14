@@ -103,6 +103,34 @@ class BookingValidatorTest {
     }
 
     @Test
+    public void test_validateBooking_invalidBookingTimes() {
+        //Arrange
+        final String laundryRoomId = "1";
+        final String houseId = "2";
+        final Instant bookingStartTimeUTC = Instant.now().plus(100, MINUTES);
+        final Instant bookingEndTimeUTC = Instant.now().plus(60, MINUTES);
+        final int startHour = LocalDateTime.ofInstant(bookingStartTimeUTC.minus(90, MINUTES), UTC).getHour();
+        final int endHour = LocalDateTime.ofInstant(bookingEndTimeUTC.plus(90, MINUTES), UTC).getHour();
+        final LaundryRoom laundryRoom = LaundryRoom.builder()
+                .id(Integer.parseInt(laundryRoomId))
+                .bookingWindow(30)
+                .minSlotLength(10)
+                .maxSlotLength(90)
+                .startHour(startHour)
+                .endHour(endHour)
+                .build();
+
+        when(laundryRoomDataAccessor.read(laundryRoomId)).thenReturn(laundryRoom);
+        when(houseDataAccessor.read(houseId)).thenReturn(House.builder().build());
+
+        // Act
+        final String actual = bookingValidator.validateBooking(laundryRoomId, houseId, bookingStartTimeUTC.toString(), bookingEndTimeUTC.toString());
+
+        // Assert
+        assertNotNull(actual);
+    }
+
+    @Test
     public void test_validateBookingTimes_success() {
         //Arrange
         final String laundryRoomId = "1";

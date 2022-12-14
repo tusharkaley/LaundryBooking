@@ -3,6 +3,10 @@ package com.laundrybooking.utils;
 public class Constants {
     public static final String HTTP_500_MESSAGE = "Something went wrong!";
 
+    public static final int HTTP_400 = 400;
+
+    public static final int HTTP_500 = 500;
+
     public static final String BOOKING_STATUS_KEY = "bookingStatus";
 
     public static final String BOOKING_START_TIME_KEY = "bookingStartTime";

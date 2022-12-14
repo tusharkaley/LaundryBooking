@@ -8,7 +8,7 @@ public class LaundryRoomDataAccessor implements DataAccessor<LaundryRoom> {
     }
 
     @Override public LaundryRoom read(final String id) {
-        return new LaundryRoom();
+        return LaundryRoom.builder().build();
     }
 
     @Override public void update() {
